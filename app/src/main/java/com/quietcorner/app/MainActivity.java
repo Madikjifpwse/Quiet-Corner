@@ -1,7 +1,10 @@
 package com.quietcorner.app;
 
 import android.os.Bundle;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.views.MapView;
@@ -31,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
         GeoPoint startPoint = new GeoPoint(43.238949, 76.889709);
         map.getController().setZoom(13.0);
         map.getController().setCenter(startPoint);
+        // Кнопка "Центрировать карту"
+        Button btnCenter = findViewById(R.id.btnCenter);
+        btnCenter.setOnClickListener(v -> {
+            map.getController().setZoom(13.0);
+            map.getController().animateTo(startPoint);
+        });
+
         // Добавляем тихие места
         java.util.List<Place> places = java.util.Arrays.asList(
                 new Place("Central Library", 43.2385, 76.9097, "Quiet place to read and study."),

@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<org.osmdroid.views.MapView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/map"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- Верхняя панель -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:title="Quiet Corner"
+        android:titleTextColor="@android:color/white"
+        android:elevation="4dp" />
+
+    <!-- Кнопка центрирования -->
+    <Button
+        android:id="@+id/btnCenter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📍 Center Map"
+        android:backgroundTint="#1976D2"
+        android:textColor="@android:color/white"
+        android:layout_margin="8dp" />
+
+    <!-- Карта -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>
