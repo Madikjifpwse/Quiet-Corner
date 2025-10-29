@@ -1,7 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.QuietCorner" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    <style name="Theme.QuietCorner" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#A8C686</item>
+        <item name="colorOnPrimary">#FAF8F5</item>
+        <item name="colorSecondary">#2C3E2F</item>
+        <item name="android:colorBackground">#1C1C1C</item>
     </style>
 </resources>

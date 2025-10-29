@@ -1,5 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Основные цвета приложения QuietCorner -->
+    <color name="background">#FAF8F5</color>
+    <color name="foreground">#2C3E2F</color>
+    <color name="card">#FFFFFF</color>
+    <color name="primary">#446A46</color>
+    <color name="primary_foreground">#FFFFFF</color>
+    <color name="secondary">#F5F1EC</color>
+    <color name="secondary_foreground">#2C3E2F</color>
+    <color name="muted">#E8E4DF</color>
+    <color name="muted_foreground">#6B7569</color>
+    <color name="accent">#A8C686</color>
+    <color name="accent_foreground">#2C3E2F</color>
+    <color name="destructive">#D4183D</color>
+    <color name="border">#D3D3D3</color>
 </resources>

@@ -1,0 +1,83 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="6dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="16dp"
+    app:cardBackgroundColor="@color/card"
+    app:strokeColor="@color/foreground"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- 📷 Изображение -->
+        <ImageView
+            android:id="@+id/place_image"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder"
+            android:background="@drawable/image_rounded_corners" />
+
+        <!-- Название -->
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Place Name"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/foreground"
+            android:layout_marginTop="8dp" />
+
+        <!-- Описание -->
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Short description of the place..."
+            android:textSize="14sp"
+            android:textColor="@color/foreground"
+            android:layout_marginTop="4dp" />
+
+        <!-- Рейтинг -->
+        <TextView
+            android:id="@+id/place_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⭐ 4.8"
+            android:textSize="14sp"
+            android:textColor="@color/foreground"
+            android:layout_marginTop="4dp" />
+
+        <!-- Иконки Wi-Fi и розетки -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:id="@+id/icon_wifi"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/wifi"
+                android:visibility="gone"
+                android:layout_marginEnd="8dp" />
+
+            <ImageView
+                android:id="@+id/icon_socket"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/battery"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

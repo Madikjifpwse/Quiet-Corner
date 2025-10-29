@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Filter Options"
+        android:textColor="@color/foreground"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <CheckBox
+        android:id="@+id/switch_wifi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wi-Fi available"
+        android:textColor="@color/foreground"
+        android:layout_marginTop="8dp" />
+
+    <CheckBox
+        android:id="@+id/switch_sockets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Power sockets"
+        android:textColor="@color/foreground"
+        android:layout_marginTop="8dp" />
+
+    <CheckBox
+        android:id="@+id/switch_free"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Free access"
+        android:textColor="@color/foreground"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/btnApply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apply"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/primary"
+        android:textColor="@color/card"
+        android:layout_marginTop="24dp" />
+
+    <!-- 🔉 Noise Level -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Noise Level"
+        android:textStyle="bold"
+        android:textColor="@color/foreground"
+        android:layout_marginTop="16dp" />
+
+    <RadioGroup
+        android:id="@+id/group_noise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/radio_quiet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quiet"
+            android:textColor="@color/foreground" />
+
+        <RadioButton
+            android:id="@+id/radio_moderate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Moderate"
+            android:textColor="@color/foreground"
+            android:layout_marginStart="16dp" />
+
+        <RadioButton
+            android:id="@+id/radio_loud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loud"
+            android:textColor="@color/foreground"
+            android:layout_marginStart="16dp" />
+    </RadioGroup>
+
+</LinearLayout>

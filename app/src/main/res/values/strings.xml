@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">QuietCorner</string>
+
+    <!-- остальные строки -->
+    <string name="filters">Фильтры</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="sockets">Розетки</string>
+    <string name="free">Бесплатно</string>
+    <string name="apply">Применить</string>
 </resources>

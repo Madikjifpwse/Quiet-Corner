@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/tvPlacesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All Quiet Places"
+        android:textSize="20sp"
+        android:textColor="@color/foreground"
+        android:layout_margin="16dp"/>
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_places"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvPlacesTitle"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:layout_above="@+id/bottom_nav_stub" />
+
+    <!-- Нижний отступ под BottomNavigationView в Activity -->
+    <View
+        android:id="@+id/bottom_nav_stub"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
