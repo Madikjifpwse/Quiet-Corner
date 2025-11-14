@@ -25,7 +25,6 @@ public class HomeFragment extends Fragment {
     private MapView map;
     private List<Place> allPlaces = new ArrayList<>();
 
-    // launcher для FilterActivity
     private final ActivityResultLauncher<Intent> filterLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == getActivity().RESULT_OK && result.getData() != null) {
@@ -48,7 +47,7 @@ public class HomeFragment extends Fragment {
                 }
             });
 
-    public HomeFragment() { /* required empty ctor */ }
+    public HomeFragment() {  }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,12 +56,10 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        // MapView
         map = view.findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);
         map.setMultiTouchControls(true);
 
-        // стартовая позиция
         GeoPoint startPoint = new GeoPoint(43.238949, 76.889709);
         map.getController().setZoom(13.0);
         map.getController().setCenter(startPoint);
@@ -70,7 +67,6 @@ public class HomeFragment extends Fragment {
         FloatingActionButton btnFilter = view.findViewById(R.id.btnFilter);
         btnFilter.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), FilterActivity.class);
-            // прокидываем текущие значения (чтобы фильтры восстанавливались)
             var prefs = getActivity().getSharedPreferences("filters", getActivity().MODE_PRIVATE);
             intent.putExtra("wifi", prefs.getBoolean("wifi", false));
             intent.putExtra("sockets", prefs.getBoolean("sockets", false));
@@ -84,7 +80,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void loadPlacesFromAssets() {
-        // грузим JSON в allPlaces (похож на раньше)
         try (InputStream is = getContext().getAssets().open("quite_places.json")) {
             byte[] buf = new byte[is.available()];
             is.read(buf);
@@ -128,7 +123,6 @@ public class HomeFragment extends Fragment {
         map.invalidate();
     }
 
-    // важная часть — корректная работа MapView в lifecycle фрагмента
     @Override
     public void onResume() {
         super.onResume();
@@ -143,7 +137,6 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-        // не вызывать map.onDetach() — просто разрешить GC (если нужно)
         super.onDestroyView();
     }
 }

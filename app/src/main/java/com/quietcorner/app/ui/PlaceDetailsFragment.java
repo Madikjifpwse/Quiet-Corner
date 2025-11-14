@@ -1,5 +1,7 @@
 package com.quietcorner.app.ui;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,18 +9,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.google.gson.Gson;
 import com.quietcorner.app.Place;
 import com.quietcorner.app.R;
-import org.osmdroid.util.GeoPoint;
 
 public class PlaceDetailsFragment extends Fragment {
 
     private ImageView placeImage;
     private TextView placeName, placeDescription;
-    private Button btnShowOnMap;
+    private Button btnShowOnMap, btnAddToFavorites;
     private Place place;
 
     @Nullable
@@ -31,7 +36,9 @@ public class PlaceDetailsFragment extends Fragment {
         placeName = view.findViewById(R.id.place_name);
         placeDescription = view.findViewById(R.id.place_description);
         btnShowOnMap = view.findViewById(R.id.btn_show_on_map);
+        btnAddToFavorites = view.findViewById(R.id.btnAddToFavorites);
 
+        // Загружаем данные о месте
         if (getArguments() != null) {
             place = (Place) getArguments().getSerializable("place");
 
@@ -39,7 +46,6 @@ public class PlaceDetailsFragment extends Fragment {
                 placeName.setText(place.getName());
                 placeDescription.setText(place.getDescription());
 
-                // Выбираем картинку по категории
                 int imageRes = R.drawable.placeholder;
                 switch (place.getCategory()) {
                     case "library":
@@ -71,6 +77,17 @@ public class PlaceDetailsFragment extends Fragment {
                         .replace(R.id.fragment_container, mapFragment)
                         .addToBackStack(null)
                         .commit();
+            }
+        });
+
+        btnAddToFavorites.setOnClickListener(v -> {
+            if (place != null) {
+                SharedPreferences prefs = requireContext().getSharedPreferences("favorites", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString(place.getName(), new Gson().toJson(place));
+                editor.apply();
+
+                Toast.makeText(requireContext(), "Добавлено в избранное ⭐", Toast.LENGTH_SHORT).show();
             }
         });
 

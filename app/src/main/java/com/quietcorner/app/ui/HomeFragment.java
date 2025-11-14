@@ -39,7 +39,6 @@ public class HomeFragment extends Fragment {
     private List<Place> allPlaces = new ArrayList<>();
     private final Random random = new Random();
 
-    // ✅ обработчик результата фильтра
     private final ActivityResultLauncher<Intent> filterLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == getActivity().RESULT_OK && result.getData() != null) {
@@ -179,4 +178,5 @@ public class HomeFragment extends Fragment {
         super.onPause();
         map.onPause();
     }
+
 }

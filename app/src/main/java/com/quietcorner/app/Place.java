@@ -13,7 +13,6 @@ public class Place implements java.io.Serializable {
     private double rating;
     private String image;
 
-    // 🆕 Добавляем поле для уровня шума
     private String noiseLevel;
 
     public Place() {}
@@ -32,6 +31,5 @@ public class Place implements java.io.Serializable {
     public double getRating() { return rating; }
     public String getImage() { return image; }
 
-    // 🆕 Геттер для нового поля
     public String getNoiseLevel() { return noiseLevel; }
 }

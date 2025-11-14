@@ -4,21 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- MapView from osmdroid -->
     <org.osmdroid.views.MapView
         android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- Filter button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnFilter"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_margin="16dp"
-        android:layout_gravity="end|bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
         android:src="@drawable/filter"
-        app:backgroundTint="@color/primary"
-        app:tint="@color/card" />
+        android:contentDescription="@string/filters"
+        app:tint="@color/background"
+        app:backgroundTint="@color/primary" />
 
 </FrameLayout>

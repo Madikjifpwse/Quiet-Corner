@@ -13,4 +13,17 @@
     <color name="accent_foreground">#2C3E2F</color>
     <color name="destructive">#D4183D</color>
     <color name="border">#D3D3D3</color>
+    <color name="red">#FF0000</color>
+    <color name="black">#000000</color>
+    <color name="profile_background">#F8F8F8</color> <!-- Светло-серый фон экрана -->
+    <color name="profile_card_background">#FFFFFF</color> <!-- Белый фон карточек -->
+    <color name="profile_icon_tint">#50C878</color> <!-- Зеленоватый цвет иконок -->
+    <color name="logout_text_color">#D22B2B</color> <!-- Красный цвет для текста Logout -->
+    <color name="profile_text_secondary">#8A8A8A</color>
+    <color name="card_foreground">#FF131313</color>
+    <color name="input">#FFDBDBDB</color>
+    <color name="input_foreground">#FF131313</color>
+    <color name="hint">#999999</color>
+    <color name="green">#50C878</color>
+    <color name="light_gray">#9E9E9E</color> <!-- Светло-серый -->
 </resources>

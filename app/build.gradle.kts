@@ -43,4 +43,5 @@ dependencies {
     implementation("org.osmdroid:osmdroid-android:6.1.16")
     implementation("androidx.recyclerview:recyclerview:1.3.0")
     implementation("com.google.code.gson:gson:2.10.1")
+    implementation("androidx.security:security-crypto:1.0.0")
 }

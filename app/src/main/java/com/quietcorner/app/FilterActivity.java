@@ -26,7 +26,6 @@ public class FilterActivity extends AppCompatActivity {
         groupNoise = findViewById(R.id.group_noise);
         btnApply = findViewById(R.id.btnApply);
 
-        // Восстанавливаем состояние
         var prefs = getSharedPreferences("filters", MODE_PRIVATE);
         switchWifi.setChecked(prefs.getBoolean("wifi", false));
         switchSockets.setChecked(prefs.getBoolean("sockets", false));
@@ -37,7 +36,6 @@ public class FilterActivity extends AppCompatActivity {
         else if (savedNoise.equals("Moderate")) groupNoise.check(R.id.radio_moderate);
         else if (savedNoise.equals("Loud")) groupNoise.check(R.id.radio_loud);
 
-        // Обработка нажатия кнопки
         btnApply.setOnClickListener(v -> {
             boolean wifi = switchWifi.isChecked();
             boolean sockets = switchSockets.isChecked();
@@ -49,7 +47,6 @@ public class FilterActivity extends AppCompatActivity {
             else if (checkedId == R.id.radio_moderate) noise = "Moderate";
             else if (checkedId == R.id.radio_loud) noise = "Loud";
 
-            // сохраняем
             prefs.edit()
                     .putBoolean("wifi", wifi)
                     .putBoolean("sockets", sockets)
@@ -57,7 +54,6 @@ public class FilterActivity extends AppCompatActivity {
                     .putString("noise", noise)
                     .apply();
 
-            // возвращаем результат
             Intent result = new Intent();
             result.putExtra("wifi", wifi);
             result.putExtra("sockets", sockets);

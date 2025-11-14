@@ -43,29 +43,26 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
         holder.rating.setText("⭐ " + place.getRating());
 
 
-        // Показ иконок Wi-Fi и розетки
         holder.iconWifi.setVisibility(place.isWifi() ? View.VISIBLE : View.GONE);
         holder.iconSocket.setVisibility(place.isSockets() ? View.VISIBLE : View.GONE);
 
-        // Выбор случайного изображения по категории
         int imageRes = R.drawable.placeholder;
         switch (place.getCategory()) {
             case "library":
-                int[] libraries = {R.drawable.library, R.drawable.library2};
+                int[] libraries = {R.drawable.library, R.drawable.library2, R.drawable.library3, R.drawable.library4, R.drawable.library5, R.drawable.library6, R.drawable.library7, R.drawable.library8, R.drawable.library9, R.drawable.library10};
                 imageRes = libraries[random.nextInt(libraries.length)];
                 break;
             case "cafe":
-                int[] cafes = {R.drawable.coffee, R.drawable.coffee2};
+                int[] cafes = {R.drawable.coffee2, R.drawable.coffee3, R.drawable.coffee4, R.drawable.coffee5, R.drawable.coffee6, R.drawable.coffee7, R.drawable.coffee8, R.drawable.coffee9, R.drawable.coffee10};
                 imageRes = cafes[random.nextInt(cafes.length)];
                 break;
             case "coworking":
-                int[] coworkings = {R.drawable.coworking, R.drawable.coworking2, R.drawable.coworking3};
+                int[] coworkings = {R.drawable.coworking, R.drawable.coworking2, R.drawable.coworking3, R.drawable.coworking4, R.drawable.coworking5, R.drawable.coworking6, R.drawable.coworking8, R.drawable.coworking9};
                 imageRes = coworkings[random.nextInt(coworkings.length)];
                 break;
         }
         holder.image.setImageResource(imageRes);
 
-        // Эффект увеличения при нажатии
         holder.itemView.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
                 case android.view.MotionEvent.ACTION_DOWN:
@@ -80,11 +77,10 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
                     v.startAnimation(scaleDown);
                     break;
             }
-            return false; // чтобы клик всё ещё срабатывал
+            return false;
         });
 
 
-        // 🔹 Обработчик клика по карточке
         holder.itemView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putSerializable("place", place);

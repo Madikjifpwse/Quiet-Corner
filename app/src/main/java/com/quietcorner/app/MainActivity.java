@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
-        // При запуске открываем HomeFragment
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new HomeFragment())

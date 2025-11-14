@@ -44,7 +44,6 @@ public class PlacesFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         loadPlacesFromAssets();
-        // уведомляем адаптер, если данные подгрузились
         adapter.notifyDataSetChanged();
     }
 
