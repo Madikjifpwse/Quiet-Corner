@@ -7,17 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.quietcorner.app.Place;
 import com.quietcorner.app.R;
+import com.quietcorner.app.ui.PlaceDetailsFragment;
 
 import java.util.List;
 import java.util.Random;
 
-public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder> {
+public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.VH> {
 
     private final Context context;
     private final List<Place> places;
@@ -30,68 +32,43 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
 
     @NonNull
     @Override
-    public PlaceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_place, parent, false);
-        return new PlaceViewHolder(view);
+    public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.item_place, parent, false);
+        return new VH(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PlaceViewHolder holder, int position) {
-        Place place = places.get(position);
-        holder.name.setText(place.getName());
-        holder.description.setText(place.getDescription());
-        holder.rating.setText("⭐ " + place.getRating());
+    public void onBindViewHolder(@NonNull VH holder, int position) {
+        Place p = places.get(position);
+        holder.tvName.setText(p.getName());
+        holder.tvDescription.setText(p.getDescription());
+        holder.tvRating.setText("⭐ " + p.getRating());
 
-
-        holder.iconWifi.setVisibility(place.isWifi() ? View.VISIBLE : View.GONE);
-        holder.iconSocket.setVisibility(place.isSockets() ? View.VISIBLE : View.GONE);
-
-        int imageRes = R.drawable.placeholder;
-        switch (place.getCategory()) {
-            case "library":
-                int[] libraries = {R.drawable.library, R.drawable.library2, R.drawable.library3, R.drawable.library4, R.drawable.library5, R.drawable.library6, R.drawable.library7, R.drawable.library8, R.drawable.library9, R.drawable.library10};
-                imageRes = libraries[random.nextInt(libraries.length)];
-                break;
-            case "cafe":
-                int[] cafes = {R.drawable.coffee2, R.drawable.coffee3, R.drawable.coffee4, R.drawable.coffee5, R.drawable.coffee6, R.drawable.coffee7, R.drawable.coffee8, R.drawable.coffee9, R.drawable.coffee10};
-                imageRes = cafes[random.nextInt(cafes.length)];
-                break;
-            case "coworking":
-                int[] coworkings = {R.drawable.coworking, R.drawable.coworking2, R.drawable.coworking3, R.drawable.coworking4, R.drawable.coworking5, R.drawable.coworking6, R.drawable.coworking8, R.drawable.coworking9};
-                imageRes = coworkings[random.nextInt(coworkings.length)];
-                break;
-        }
-        holder.image.setImageResource(imageRes);
-
-        holder.itemView.setOnTouchListener((v, event) -> {
-            switch (event.getAction()) {
-                case android.view.MotionEvent.ACTION_DOWN:
-                    android.view.animation.Animation scaleUp =
-                            android.view.animation.AnimationUtils.loadAnimation(context, R.anim.scale_up);
-                    v.startAnimation(scaleUp);
-                    break;
-                case android.view.MotionEvent.ACTION_UP:
-                case android.view.MotionEvent.ACTION_CANCEL:
-                    android.view.animation.Animation scaleDown =
-                            android.view.animation.AnimationUtils.loadAnimation(context, R.anim.scale_down);
-                    v.startAnimation(scaleDown);
-                    break;
+        // small preview image by category (not for map icons)
+        int img = R.drawable.placeholder;
+        if (p.getCategory() != null) {
+            switch (p.getCategory().toLowerCase()) {
+                case "library": img = R.drawable.library; break;
+                case "cafe": img = R.drawable.coffee2; break;
+                case "coworking": img = R.drawable.coworking; break;
             }
-            return false;
-        });
+        }
+        holder.ivImage.setImageResource(img);
 
+        holder.ivWifi.setVisibility(p.isWifi() ? View.VISIBLE : View.GONE);
+        holder.ivSocket.setVisibility(p.isSockets() ? View.VISIBLE : View.GONE);
 
         holder.itemView.setOnClickListener(v -> {
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("place", place);
+            // open PlaceDetailsFragment
+            Bundle args = new Bundle();
+            args.putSerializable("place", p);
 
-            androidx.fragment.app.Fragment fragment = new com.quietcorner.app.ui.PlaceDetailsFragment();
-            fragment.setArguments(bundle);
+            PlaceDetailsFragment details = new PlaceDetailsFragment();
+            details.setArguments(args);
 
-            ((androidx.fragment.app.FragmentActivity) context)
-                    .getSupportFragmentManager()
+            ((FragmentActivity) context).getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
+                    .replace(R.id.fragment_container, details)
                     .addToBackStack(null)
                     .commit();
         });
@@ -102,19 +79,18 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
         return places.size();
     }
 
-    public static class PlaceViewHolder extends RecyclerView.ViewHolder {
-        ImageView image, iconWifi, iconSocket;
-        TextView name, description, rating;
+    static class VH extends RecyclerView.ViewHolder {
+        ImageView ivImage, ivWifi, ivSocket;
+        TextView tvName, tvDescription, tvRating;
 
-        public PlaceViewHolder(@NonNull View itemView) {
+        VH(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.place_image);
-            name = itemView.findViewById(R.id.tvName);
-            description = itemView.findViewById(R.id.tvDescription);
-            rating = itemView.findViewById(R.id.place_rating);
-            iconWifi = itemView.findViewById(R.id.icon_wifi);
-            iconSocket = itemView.findViewById(R.id.icon_socket);
+            ivImage = itemView.findViewById(R.id.place_image);
+            ivWifi = itemView.findViewById(R.id.icon_wifi);
+            ivSocket = itemView.findViewById(R.id.icon_socket);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvDescription = itemView.findViewById(R.id.tvDescription);
+            tvRating = itemView.findViewById(R.id.place_rating);
         }
     }
-
 }

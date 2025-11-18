@@ -18,38 +18,27 @@ public class ProfileFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         TextView tvName = view.findViewById(R.id.tvName);
         TextView tvEmail = view.findViewById(R.id.tvEmail);
-        Button btnEdit = view.findViewById(R.id.btnEditProfile);
-        Button btnSettings = view.findViewById(R.id.btnSettings);
-        Button btnLogout = view.findViewById(R.id.btnLogout);
+        View btnLogout = view.findViewById(R.id.btnLogout);
 
         UserRepository repo = new UserRepository(requireContext());
-        User user = repo.getCurrentUser();
+        User user = repo.getUser();
 
-        if (user == null) {
-            getParentFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new RegisterFragment())
-                    .commit();
-            return view;
+        if (user != null) {
+            tvName.setText(user.getUsername());
+            tvEmail.setText(user.getEmail());
         }
-
-        tvName.setText(user.getUsername());
-        tvEmail.setText(user.getEmail());
-
-        btnEdit.setOnClickListener(v ->
-                tvName.setText("Редактирование профиля пока не реализовано 🙂"));
-
-        btnSettings.setOnClickListener(v ->
-                tvName.setText("Настройки в разработке ⚙️"));
 
         btnLogout.setOnClickListener(v -> {
             repo.logout();
-            getParentFragmentManager().beginTransaction()
+            getParentFragmentManager()
+                    .beginTransaction()
                     .replace(R.id.fragment_container, new RegisterFragment())
                     .commit();
         });
@@ -57,3 +46,4 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 }
+
