@@ -27,6 +27,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlacesFragment extends Fragment {
+    private int[] libraryImages = {R.drawable.library, R.drawable.library2, R.drawable.library3, R.drawable.library4, R.drawable.library5, R.drawable.library6, R.drawable.library7, R.drawable.library8, R.drawable.library9, R.drawable.library10};
+    private int[] cafeImages = {R.drawable.coffee2, R.drawable.coffee3, R.drawable.coffee4, R.drawable.coffee5, R.drawable.coffee6, R.drawable.coffee7, R.drawable.coffee8, R.drawable.coffee9, R.drawable.coffee10, R.drawable.coffee11, R.drawable.coffee12, R.drawable.coffee13};
+    private int[] coworkingImages = {R.drawable.coworking, R.drawable.coworking2, R.drawable.coworking3, R.drawable.coworking4, R.drawable.coworking5, R.drawable.coworking6, R.drawable.coworking8, R.drawable.coworking9};
+
 
     private final List<Place> allPlaces = new ArrayList<>();
 

@@ -25,6 +25,22 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.VH> {
     private final List<Place> places;
     private final Random random = new Random();
 
+    // картинки по категориям
+    private final int[] libraryImages = {
+            R.drawable.library,
+            R.drawable.library2
+    };
+
+    private final int[] cafeImages = {
+            R.drawable.coffee2,
+            R.drawable.coffee3
+    };
+
+    private final int[] coworkingImages = {
+            R.drawable.coworking,
+            R.drawable.coworking2
+    };
+
     public PlaceAdapter(Context context, List<Place> places) {
         this.context = context;
         this.places = places;
@@ -40,26 +56,38 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.VH> {
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
         Place p = places.get(position);
+
         holder.tvName.setText(p.getName());
         holder.tvDescription.setText(p.getDescription());
         holder.tvRating.setText("⭐ " + p.getRating());
 
-        // small preview image by category (not for map icons)
-        int img = R.drawable.placeholder;
+        // Выбор рандомного изображения
+        int preview = R.drawable.placeholder;
+
         if (p.getCategory() != null) {
             switch (p.getCategory().toLowerCase()) {
-                case "library": img = R.drawable.library; break;
-                case "cafe": img = R.drawable.coffee2; break;
-                case "coworking": img = R.drawable.coworking; break;
+                case "library":
+                    preview = libraryImages[random.nextInt(libraryImages.length)];
+                    break;
+
+                case "cafe":
+                    preview = cafeImages[random.nextInt(cafeImages.length)];
+                    break;
+
+                case "coworking":
+                    preview = coworkingImages[random.nextInt(coworkingImages.length)];
+                    break;
             }
         }
-        holder.ivImage.setImageResource(img);
 
+        holder.ivImage.setImageResource(preview);
+
+        // Wi-Fi / Socket icons
         holder.ivWifi.setVisibility(p.isWifi() ? View.VISIBLE : View.GONE);
         holder.ivSocket.setVisibility(p.isSockets() ? View.VISIBLE : View.GONE);
 
+        // Click listener — open details
         holder.itemView.setOnClickListener(v -> {
-            // open PlaceDetailsFragment
             Bundle args = new Bundle();
             args.putSerializable("place", p);
 

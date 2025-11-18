@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="8dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Название -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:text="Place name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Категория -->
+        <TextView
+            android:id="@+id/tvCategory"
+            android:text="Category"
+            android:textColor="#777"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Рейтинг -->
+        <TextView
+            android:id="@+id/tvRating"
+            android:text="⭐ 4.5"
+            android:textSize="16sp"
+            android:layout_marginTop="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Иконки-фичи -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/iconWifi"
+                android:src="@drawable/wifi"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="12dp"/>
+
+            <ImageView
+                android:id="@+id/iconSockets"
+                android:src="@drawable/battery"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="12dp"/>
+
+            <TextView
+                android:id="@+id/tvCost"
+                android:text="Free"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"/>
+        </LinearLayout>
+
+        <!-- Кнопка Подробнее -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Подробнее"
+            android:layout_marginTop="14dp"/>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
