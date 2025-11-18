@@ -131,7 +131,7 @@ public class HomeFragment extends Fragment {
                     iconRes = R.drawable.coffee;
                     break;
                 case "coworking":
-                    iconRes = R.drawable.briefcase;
+                    iconRes = R.drawable.laptop;
                     break;
                 default:
                     iconRes = R.drawable.ic_default_marker;
