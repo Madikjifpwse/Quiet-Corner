@@ -1,63 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:background="@color/background"
-    android:gravity="center_horizontal">
+    android:padding="16dp"
+    android:background="@color/background">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/user"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="@string/app_name" />
-
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Имя пользователя"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/foreground" />
-
-    <TextView
-        android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="user@email.com"
-        android:textColor="@color/hint"
-        android:layout_marginBottom="24dp" />
-
-    <Button
-        android:id="@+id/btnEditProfile"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Редактировать профиль"
-        android:textAllCaps="false"
-        android:backgroundTint="@color/primary"
-        android:textColor="@android:color/white"
-        android:layout_marginBottom="12dp" />
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-    <Button
-        android:id="@+id/btnSettings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Настройки"
-        android:textAllCaps="false"
-        android:backgroundTint="@color/accent"
-        android:textColor="@android:color/white"
-        android:layout_marginBottom="12dp" />
+        <!-- Аватар -->
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:src="@drawable/user"
+            android:background="@drawable/bg_profile_button"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="8dp"/>
 
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Выйти"
-        android:textAllCaps="false"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:textColor="@android:color/white" />
+        <!-- Имя -->
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/foreground"
+            android:layout_marginTop="12dp"/>
 
-</LinearLayout>
+        <!-- Email -->
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="email@example.com"
+            android:textColor="@color/hint"
+            android:layout_marginBottom="22dp"/>
+
+        <!-- Edit profile -->
+        <Button
+            android:id="@+id/btnEditProfile"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Редактировать профиль"
+            android:backgroundTint="@color/primary"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="12dp"
+            android:textAllCaps="false"/>
+
+        <!-- Settings -->
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Настройки"
+            android:backgroundTint="@color/accent"
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Logout -->
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Выйти"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+</ScrollView>

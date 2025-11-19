@@ -1,11 +1,14 @@
 package com.quietcorner.app.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -18,14 +21,16 @@ public class ProfileFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        ImageView imgAvatar = view.findViewById(R.id.imgAvatar);
         TextView tvName = view.findViewById(R.id.tvName);
         TextView tvEmail = view.findViewById(R.id.tvEmail);
-        View btnLogout = view.findViewById(R.id.btnLogout);
+        Button btnLogout = view.findViewById(R.id.btnLogout);
 
         UserRepository repo = new UserRepository(requireContext());
         User user = repo.getUser();
@@ -46,4 +51,3 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 }
-

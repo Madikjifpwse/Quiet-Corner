@@ -25,20 +25,14 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.VH> {
     private final List<Place> places;
     private final Random random = new Random();
 
-    // картинки по категориям
     private final int[] libraryImages = {
-            R.drawable.library,
-            R.drawable.library2
+            R.drawable.library, R.drawable.library2, R.drawable.library3
     };
-
     private final int[] cafeImages = {
-            R.drawable.coffee2,
-            R.drawable.coffee3
+            R.drawable.coffee2, R.drawable.coffee3, R.drawable.coffee4
     };
-
     private final int[] coworkingImages = {
-            R.drawable.coworking,
-            R.drawable.coworking2
+            R.drawable.coworking, R.drawable.coworking2, R.drawable.coworking3
     };
 
     public PlaceAdapter(Context context, List<Place> places) {
@@ -61,7 +55,6 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.VH> {
         holder.tvDescription.setText(p.getDescription());
         holder.tvRating.setText("⭐ " + p.getRating());
 
-        // Выбор рандомного изображения
         int preview = R.drawable.placeholder;
 
         if (p.getCategory() != null) {
@@ -69,11 +62,9 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.VH> {
                 case "library":
                     preview = libraryImages[random.nextInt(libraryImages.length)];
                     break;
-
                 case "cafe":
                     preview = cafeImages[random.nextInt(cafeImages.length)];
                     break;
-
                 case "coworking":
                     preview = coworkingImages[random.nextInt(coworkingImages.length)];
                     break;
@@ -82,11 +73,9 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.VH> {
 
         holder.ivImage.setImageResource(preview);
 
-        // Wi-Fi / Socket icons
         holder.ivWifi.setVisibility(p.isWifi() ? View.VISIBLE : View.GONE);
         holder.ivSocket.setVisibility(p.isSockets() ? View.VISIBLE : View.GONE);
 
-        // Click listener — open details
         holder.itemView.setOnClickListener(v -> {
             Bundle args = new Bundle();
             args.putSerializable("place", p);
